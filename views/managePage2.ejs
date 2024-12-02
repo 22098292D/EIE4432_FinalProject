@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/logout.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+        <a class="navbar-brand" href="homePage.html">
+          <img src="img/logo.png" alt="Logo" height="60" class="d-inline-block align-text-top" />
+        </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-lg-10">
+                    <li class="nav-item">
+                        <a class="nav-link px-5 text-center" href="managePage1.html">Film Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-5 text-center link-primary fw-bold" href="managePage2.html">All Booking History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-5 text-center" href="managePage3.html">All User Information</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ms-auto">
+                <button class="btn btn-outline-primary" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div role="main">
+        <div class="container my-5">
+            <h2 class="mb-4">Purchase Records</h2>
+            
+            <% if (tickets && tickets.length > 0) { %>
+                <% tickets.forEach(ticket => { %>
+                    <div class="card mb-3 shadow-sm">
+                      <div class="card-body">
+                          <div class="row align-items-center">
+                              <div class="col-md-2">
+                                  <div class="text-muted mb-1">UserId:</div>
+                                  <strong><%= ticket.userId %></strong>
+                                  <div class="text-muted mt-1 small">
+                                      Booked at: 
+                                      <span class="d-block"><%= new Date(ticket.bookingTime).toLocaleString() %></span>
+                                  </div>
+                              </div>
+                              
+                              <div class="col-md-3">
+                                  <h5 class="card-title mb-0"><%= ticket.movieTitle %></h5>
+                                  <span class="badge bg-primary"><%= ticket.ticketClass %></span>
+                              </div>
+                              
+                              <div class="col-md-2">
+                                  <div class="text-muted mb-1"><%= ticket.date %></div>
+                                  <div class="text-muted"><%= ticket.time %></div>
+                              </div>
+                              
+                              <div class="col-md-3">
+                                  <div class="text-muted mb-1">Venue: <%= ticket.venue %></div>
+                                  <div class="text-muted">Seat: <%= ticket.seat %></div>
+                              </div>
+                              
+                              <div class="col-md-2 text-end">
+                                  <h5 class="text-primary mb-0">$<%= ticket.price.toFixed(2) %></h5>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="alert alert-info">No booking records found.</div>
+            <% } %>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 fixed-bottom">
+      EIE4432 Group Project ©22098292D Chen Ruiqi ©22096749D Zhang Chuhan
+    </footer>
+</body>
+</html>

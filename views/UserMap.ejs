@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>22098292D_Drink Ordering System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script src="../js/logout.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="../homePage.html">
+          <img src="../img/logo.png" alt="Logo" height="60" class="d-inline-block align-text-top" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <div class="navbar-nav gap-lg-10">
+            <a class="nav-link px-5 text-center" href="../userPage.html">User</a>
+            <a class="nav-link px-5 text-center link-primary fw-bold" href="../booking.html">Ticket Booking</a>
+          </div>
+        </div>
+        <div class="ms-auto">
+          <button class="btn btn-outline-primary" onclick="handleLogout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container my-5">
+        <h2 class="text-center fw-bold mb-4">Select an Available Seat</h2>
+
+        <!-- Seat Map -->
+        <div class="d-flex justify-content-center mb-3">
+          <svg id="seatMap" width="700" height="350" style="background-color: #87cefa">
+            <!-- Row and Column Labels -->
+            <script>
+              let selectedSeat = null; // 用于记录当前高亮的座位
+
+              document.addEventListener('DOMContentLoaded', () => {
+                  const mapInfo = <%-   JSON.stringify(mapInfo || {}) %>;
+                  const mapID = <%-   JSON.stringify(mapID || {}) %>;
+
+                  const seatTypes = {
+                  unavailable: '#FFFFFF', // 不可用座位
+                  available: '#32CD32', // 可用座位
+                  selected: '#FF6347', // 已选座位
+                  };
+
+                  const seatWidth = 40; // 座位宽度
+                  const seatHeight = 40; // 座位高度
+                  const seatSpacing = 10; // 座位间距
+
+                  const seatMapContainer = document.getElementById('seatMap');
+
+                  // 绘制列号
+                  const columns = Array.from(new Set(Object.keys(mapInfo).map((key) => parseInt(key.slice(1)))));
+                  columns.forEach((col, index) => {
+                  const colLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                  colLabel.setAttribute('x', 40 + index * (seatWidth + seatSpacing) + seatWidth / 2);
+                  colLabel.setAttribute('y', 30); // 放置在顶部
+                  colLabel.setAttribute('text-anchor', 'middle');
+                  colLabel.setAttribute('font-size', '16');
+                  colLabel.setAttribute('font-weight', 'bold');
+                  colLabel.textContent = col;
+                  seatMapContainer.appendChild(colLabel);
+                  });
+
+                  // 绘制行号
+                  const rows = Array.from(new Set(Object.keys(mapInfo).map((key) => key[0])));
+                  rows.forEach((row, index) => {
+                  const rowLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                  rowLabel.setAttribute('x', 20); // 放置在左侧
+                  rowLabel.setAttribute('y', 50 + index * (seatHeight + seatSpacing) + seatHeight / 2);
+                  rowLabel.setAttribute('text-anchor', 'middle');
+                  rowLabel.setAttribute('font-size', '16');
+                  rowLabel.setAttribute('font-weight', 'bold');
+                  rowLabel.textContent = row;
+                  seatMapContainer.appendChild(rowLabel);
+                  });
+
+                  // 绘制座位图
+                  Object.entries(mapInfo).forEach(([seatID, seatData]) => {
+                  const row = seatID[0];
+                  const col = parseInt(seatID.slice(1));
+
+                  let seatType;
+                  let userID;
+                  if (!seatData.exist) {
+                      seatType = 'unavailable';
+                  } else if (seatData.selected) {
+                      seatType = 'selected';
+                      userID = seatData.userID;
+                  } else {
+                      seatType = 'available';
+                  }
+
+                  // 跳过 Unavailable 座位
+                  if (seatType === 'unavailable') {
+                    return; // 不渲染该座位
+                  }
+
+                  createSeat(row, col, seatType,seatData.userID, seatData.luxury,mapID);
+                  });
+
+                  function createSeat(row, col, type,userID, isLuxury,mapID) {
+                  const rowIndex = row.charCodeAt(0) - 65; // A=0, B=1, etc.
+                  const colIndex = col - 1;
+
+                  const seatGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                  seatGroup.setAttribute('id', `${row}${col}`);
+
+                  const seat = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                  seat.setAttribute('x', 40 + colIndex * (seatWidth + seatSpacing));
+                  seat.setAttribute('y', 40 + rowIndex * (seatHeight + seatSpacing));
+                  seat.setAttribute('width', seatWidth);
+                  seat.setAttribute('height', seatHeight);
+                  seat.setAttribute('rx', 8); // 圆角矩形
+                  seat.setAttribute('ry', 8);
+                  seat.setAttribute('fill', seatTypes[type]);
+                  seat.setAttribute('stroke', '#000');
+                  seat.setAttribute('stroke-width', '2');
+
+
+
+                  // 添加点击事件
+                  seat.addEventListener('click', () =>
+                    handleSeatClick(seat, type, `${row}${col}`, isLuxury, mapID)
+                  );
+                  seatGroup.appendChild(seat);
+
+                  if (isLuxury) {
+                      const star = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                      star.setAttribute('x', 40 + colIndex * (seatWidth + seatSpacing) + seatWidth / 2);
+                      star.setAttribute('y', 40 + rowIndex * (seatHeight + seatSpacing) + seatHeight / 2 + 5);
+                      star.setAttribute('text-anchor', 'middle');
+                      star.setAttribute('font-size', '20');
+                      star.setAttribute('fill', 'gold');
+                      star.textContent = '★';
+                      seatGroup.appendChild(star);
+                  }
+
+                  seatMapContainer.appendChild(seatGroup);
+                  }
+              });
+
+              function handleSeatClick(seat, type, seatID, isLuxury, mapID) {
+                  if (type === 'available') {
+                      // 取消之前的高亮
+                      if (selectedSeat) {
+                      selectedSeat.setAttribute('stroke-width', '1'); // 恢复边框宽度
+                      selectedSeat.setAttribute('stroke', '#000'); // 恢复边框颜色
+                      }
+
+                      // 高亮当前选中的座位
+                      seat.setAttribute('stroke-width', '3'); // 加粗边框
+                      seat.setAttribute('stroke', '#FFD700'); // 设置为金色
+                      selectedSeat = seat; // 更新当前选中座位
+
+                      // 更新 localStorage
+                      localStorage.setItem(
+                        'seatState',
+                        JSON.stringify({
+                          mapId: mapID,
+                          seatId: seatID,
+                          luxury: isLuxury,
+                        })
+                      );
+                      // 提示消息
+                      alert(
+                      `You selected seat ${seatID}.\nLuxury: ${
+                          isLuxury ? 'Yes' : 'No'
+                      }.`
+                      );
+                  } else if (type === 'selected') {
+                      // 红色座位被占用
+                      alert('This seat is already occupied and cannot be selected.');
+                  }
+              }
+            </script>
+          </svg>
+        </div>
+
+        <!-- Legend -->
+        <div class="text-center mb-4">
+          <span class="badge bg-light border text-dark me-2">Unavailable Seat</span>
+          <span class="badge bg-success me-2">Available Seat</span>
+          <span class="badge bg-danger me-2">Selected Seat</span>
+          <span class="badge bg-warning text-dark me-2">Luxury Seat (★)</span>
+          <p class="mt-2">Note: Seats marked with a star are luxury seats, which cost more!</p>
+        </div>
+
+        <!-- Confirm Button -->
+        <div class="text-center">
+          <a href="../booking.html" class="btn btn-primary">Confirm</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3 fixed-bottom">
+      EIE4432 Group Project ©22098292D Chen Ruiqi ©22096749D Zhang Chuhan
+    </footer>
+  </body>
+</html>

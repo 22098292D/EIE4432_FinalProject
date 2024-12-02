@@ -1,0 +1,277 @@
+[
+  {
+    "mapID": 0,
+    "mapInfo": {
+      "A1": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A2": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A3": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A4": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A5": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A6": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A7": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A8": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "A9": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B1": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B2": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B3": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B4": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B5": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B6": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B7": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B8": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "B9": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C1": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C2": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C3": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C4": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C5": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C6": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C7": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C8": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "C9": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D1": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D2": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D3": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D4": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D5": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D6": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D7": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D8": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "D9": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E1": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E2": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E3": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E4": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E5": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E6": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E7": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E8": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      },
+      "E9": {
+        "exist": true,
+        "selected": false,
+        "userID": "none",
+        "luxury": false
+      }
+    }
+  }
+]

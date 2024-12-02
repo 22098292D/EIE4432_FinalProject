@@ -1,0 +1,22 @@
+[
+  {
+    "userId": "JohnDoe",
+    "movieTitle": "Oppenheimer",
+    "ticketClass": "First Class",
+    "date": "2024-10-31",
+    "time": "19:30 - 21:30",
+    "venue": "Hall A",
+    "seat": "A7",
+    "price": 100.0
+  },
+  {
+    "userId": "Ricky",
+    "movieTitle": "Oppenheimer",
+    "ticketClass": "Second Class",
+    "date": "2024-10-31",
+    "time": "19:30 - 21:30",
+    "venue": "Hall A",
+    "seat": "B8",
+    "price": 80.0
+  }
+]

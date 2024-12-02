@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Booking</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/logout.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="homePage.html">
+          <img src="img/logo.png" height="60" class="d-inline-block align-text-top" alt="Logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <div class="navbar-nav gap-lg-10">
+            <a class="nav-link px-5 text-center" href="userPage.html">User</a>
+            <a class="nav-link px-5 text-center link-primary fw-bold" href="booking.html">Ticket Booking</a>
+          </div>
+        </div>
+        <div class="ms-auto">
+          <button class="btn btn-outline-primary" onclick="handleLogout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main">
+      <div class="container my-5">
+        <div class="row">
+          <!-- Movie Info Card -->
+          <div class="col-md-4">
+            <div id="movieInfoCard" class="card shadow d-none">
+              <div id="movieCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      id="moviePoster"
+                      src=""
+                      class="d-block w-100"
+                      style="height: 650px; object-fit: cover"
+                      alt="Movie Poster" />
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
+                      <h5 id="movieTitle" class="fw-bold"></h5>
+                      <p id="movieDescription" class="small"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="mb-2"><strong>Director: </strong><span id="movieDirector"></span></p>
+                  <p class="mb-2"><strong>Show Date: </strong><span id="movieDate"></span></p>
+                  <p class="mb-2"><strong>Time: </strong><span id="movieTime"></span></p>
+                  <p class="mb-2"><strong>Venue: </strong><span id="movieVenue"></span></p>
+                </div>
+                <div class="border-top pt-3">
+                  <h6 class="fw-bold mb-2">Price:</h6>
+                  <p class="mb-1">First Class: $<span id="firstClassPrice"></span></p>
+                  <p class="mb-1">Second Class: $<span id="secondClassPrice"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <div class="col-md-8">
+            <!-- Booking Section -->
+            <div id="bookingSection">
+              <h2 class="text-center fw-bold mb-4">Booking a Ticket</h2>
+
+              <div class="mb-3">
+                <label for="movieSelect" class="form-label">Select Movie:</label>
+                <select id="movieSelect" class="form-select">
+                  <option value="">Choose a movie...</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="dateSelect" class="form-label">Select Date:</label>
+                <select id="dateSelect" class="form-select" disabled>
+                  <option value="">Choose a date...</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="timeSelect" class="form-label">Select Time:</label>
+                <select id="timeSelect" class="form-select" disabled>
+                  <option value="">Choose Time...</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="venueDisplay" class="form-label">Venue:</label>
+                <input type="text" id="venueDisplay" class="form-control" readonly />
+              </div>
+              <div class="mb-3 d-flex align-items-center gap-2">
+                <a href="UserMap.html" class="btn btn-secondary">Choose Seat</a>
+                <span id="seatInfo" class="text-primary" style="font-size: 1rem"></span>
+              </div>
+              <div class="mb-3">
+                <label for="discountSelect" class="form-label">Select Discount:</label>
+                <select id="discountSelect" class="form-select">
+                  <option value="">No discount</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Price:</label>
+                <div>
+                  <span id="priceDisplay" class="fw-bold text-primary">$0</span>
+                  <s id="originalPrice" class="text-muted ms-2 d-none"></s>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button id="confirmPayBtn" class="btn btn-primary">Confirm and Pay</button>
+              </div>
+            </div>
+
+            <!-- Payment Section (Initially Hidden) -->
+            <div id="paymentSection" class="d-none">
+              <h2 class="text-center fw-bold mb-4">Payment Details</h2>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Bank Card Number:</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  class="form-control w-50"
+                  placeholder="Please enter your bank card number" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Bank Card Password:</label>
+                <input
+                  type="password"
+                  id="cardPassword"
+                  class="form-control w-50"
+                  placeholder="Please enter your bank card password" />
+              </div>
+
+              <div class="text-center mt-4">
+                <button class="btn btn-secondary me-2" onclick="backToBooking()">Back</button>
+                <button class="btn btn-primary" onclick="validatePayment()">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3 fixed-bottom">
+      EIE4432 Group Project ©22098292D Chen Ruiqi ©22096749D Zhang Chuhan
+    </footer>
+  </body>
+</html>

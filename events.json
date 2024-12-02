@@ -1,0 +1,38 @@
+[
+  {
+    "_id": 1,
+    "movieTitle": "Oppenheimer",
+    "director": "Christopher Nolan",
+    "venue": "A",
+    "description": "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II, exploring the moral complexities and consequences of scientific advancement.",
+    "firstClassPrice": 100,
+    "secondClassPrice": 80,
+    "showDate": "2024-10-31",
+    "startTime": "19:30",
+    "endTime": "21:30"
+  },
+  {
+    "_id": 2,
+    "movieTitle": "Dune: Part Two",
+    "director": "Denis Villeneuve",
+    "venue": "B",
+    "description": "Paul Atreides unites with the Fremen people of Arrakis to take revenge against the conspirators who destroyed his family, while trying to prevent a terrible future only he can foresee.",
+    "firstClassPrice": 100,
+    "secondClassPrice": 80,
+    "showDate": "2024-11-05",
+    "startTime": "20:00",
+    "endTime": "22:00"
+  },
+  {
+    "_id": 3,
+    "movieTitle": "Kung Fu Panda 4",
+    "director": "Mike Mitchell",
+    "venue": "C",
+    "description": "Po must train a new warrior when he's chosen to become the spiritual leader of the Valley of Peace. However, when a powerful shape-shifting sorceress appears, he must face his biggest challenge yet.",
+    "firstClassPrice": 100,
+    "secondClassPrice": 80,
+    "showDate": "2024-11-10",
+    "startTime": "15:30",
+    "endTime": "17:30"
+  }
+]

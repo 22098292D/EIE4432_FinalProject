@@ -1,0 +1,32 @@
+[
+  {
+    "avatar": "user1.png",
+    "userID": "22096749d",
+    "password": "22096749d",
+    "nickname": "Zerox",
+    "email": "22096749d@example.com",
+    "gender": "Unspecified",
+    "birthdate": "2024/11/24",
+    "discount": {
+      "10": 0,
+      "20": 0,
+      "50": 0,
+      "free": 10000000
+    }
+  },
+  {
+    "avatar": "user1.png",
+    "userID": "admin",
+    "password": "adminpass",
+    "nickname": "admin",
+    "email": "admin@example.com",
+    "gender": "Unspecified",
+    "birthdate": "yyyy/mm/dd",
+    "discount": {
+      "10": 10000000,
+      "20": 10000000,
+      "50": 10000000,
+      "free": 10000000
+    }
+  }
+]
